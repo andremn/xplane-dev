@@ -1,0 +1,33 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<Import Project="$(MSBuildSDKsPath)\Microsoft.NET.Sdk\Sdk\Sdk.props" Condition="$(IlcPath) != ''" />
+
+	<PropertyGroup>
+		<NativeLib>Shared</NativeLib>
+    <SelfContained>true</SelfContained>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(OS)' == 'Windows_NT'">
+		<XPlaneSdk>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)../../native/sdk/Win'))</XPlaneSdk>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(OS)' == 'OSX'">
+		<XPlaneSdk>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)../../native/sdk/Mac'))</XPlaneSdk>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<IlcCompileInput Include="$(MSBuildThisFileDirectory)../../lib/$(TargetFramework)/XPDev.XPlugin.dll" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(OS)' == 'Windows_NT'">
+		<NativeLibrary Include="$(XPlaneSdk)/XPLM_64.lib" />
+		<NativeLibrary Include="$(XPlaneSdk)/XPWidgets_64.lib" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(OS)' == 'OSX'">
+		<CustomLinkerArg Include="-F $(XPlaneSdk)" />
+		<NativeFramework Include="XPLM" />
+		<NativeFramework Include="XPWidgets" />
+	</ItemGroup>
+
+</Project>

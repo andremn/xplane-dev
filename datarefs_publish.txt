@@ -1,0 +1,11 @@
+a320/Aircraft/PowerPlant/EngineR/RateLP1
+a320/Aircraft/PowerPlant/EngineL/RateLP1
+a320/Aircraft/Pneumatic/Cabin/DoorStateLF
+a320/Overhead/LightBelts
+a320/Overhead/LightBeacon
+a320/Overhead/LightLandL
+a320/Aircraft/Cockpit/Overhead/LightNose/Position
+a320/Aircraft/Gears/NLG/GearPosition
+a320/Aircraft/FMGS/FMGC1/CruiseLevel
+a320/Aircraft/FMGS/FAC1/AirSpeedSlats
+a320/Aircraft/FMGS/FAC1/AirSpeedFlaps

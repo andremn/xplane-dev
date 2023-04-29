@@ -1,0 +1,43 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps: 
+- task: NuGetCommand@2
+  displayName: 'Authenticate with NuGet feed'
+  inputs:
+    command: custom
+    arguments: 'sources update -Name "XPDev" -Username "andrenls" -Password "$(System.AccessToken)" -StorePasswordInClearText -ConfigFile nuget.config'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build and Pack Platform'
+  inputs:
+    command: 'pack'
+    packagesToPack: 'Platform/**/*.csproj'
+    versioningScheme: 'byPrereleaseNumber'
+    majorVersion: '0'
+    minorVersion: '0'
+    patchVersion: '1'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Run Unit Tests'
+  inputs:
+    command: 'test'
+    projects: 'Platform/**/*Test.csproj'
+    testRunTitle: 'Platform Unit Tests'
+
+- task: PublishSymbols@2
+  displayName: 'Publish Symbols'
+  inputs:
+    SearchPattern: '**/bin/**/*.pdb'
+    SymbolServerType: 'TeamServices'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Publish Packages'
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '780c7d43-e058-41e6-863e-cede2bf0eebb/277b949a-e245-44a3-a6cc-5d87ecc917c5'

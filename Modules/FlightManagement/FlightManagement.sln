@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPDev.FlightManagement", "XPDev.FlightManagement\XPDev.FlightManagement.csproj", "{AAD2B564-191C-41DE-8793-32E1C11A7EAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPDev.FlightManagement.Test", "XPDev.FlightManagement.Test\XPDev.FlightManagement.Test.csproj", "{35CD9089-A3BE-440F-A420-4699A79EDFA5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAD2B564-191C-41DE-8793-32E1C11A7EAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAD2B564-191C-41DE-8793-32E1C11A7EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAD2B564-191C-41DE-8793-32E1C11A7EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAD2B564-191C-41DE-8793-32E1C11A7EAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35CD9089-A3BE-440F-A420-4699A79EDFA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35CD9089-A3BE-440F-A420-4699A79EDFA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35CD9089-A3BE-440F-A420-4699A79EDFA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35CD9089-A3BE-440F-A420-4699A79EDFA5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {83B900E6-7558-4634-AC33-67DA6401D240}
+	EndGlobalSection
+EndGlobal

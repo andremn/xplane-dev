@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<OutputType>Library</OutputType>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<RuntimeIdentifiers>win-x64;osx-x64;linux-x64</RuntimeIdentifiers>
+		<PackageId>XPDev.XPlugin</PackageId>
+		<Version>0.0.1</Version>
+		<Authors>xpdev</Authors>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="XPDev.XPlugin.props" Pack="true" PackagePath="build\$(TargetFramework)\" />
+		<None Include="XPDev.XPlugin.targets" Pack="true" PackagePath="build\$(TargetFramework)\" />
+		<None Include="XPlaneSdk\**" Pack="true" PackagePath="native\sdk\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+		<PackageReference Include="XPDev.Foundation" Version="0.0.1-CI-20210220-215509" />
+		<PackageReference Include="Microsoft.DotNet.ILCompiler" Version="6.0.0-preview.2.21118.5" PrivateAssets="none" Condition="$(IlcPath) == ''" />
+	</ItemGroup>
+
+</Project>

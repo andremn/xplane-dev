@@ -1,0 +1,115 @@
+trigger:
+- develop
+
+jobs:
+- job:
+  displayName: Windows
+  pool:
+    vmImage: 'windows-latest'
+
+  steps:
+  - task: NuGetCommand@2
+    displayName: 'Authenticate with NuGet feed'
+    inputs:
+      command: custom
+      arguments: 'sources update -Name "XPDev" -Username "andrenls" -Password "$(System.AccessToken)" -StorePasswordInClearText -ConfigFile nuget.config'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Restore Win 64 packages'
+    inputs:
+      command: 'restore'
+      projects: 'Products/**/*.csproj'
+      restoreArguments: '--runtime win-x64'
+      feedsToUse: 'config'
+      nugetConfigPath: 'nuget.config'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Build'
+    inputs:
+      command: 'publish'
+      arguments: '-r win-x64 -c $(BuildConfiguration) -o $(Build.ArtifactStagingDirectory)/win-x64'
+      projects: 'Products/**/*.csproj'
+      zipAfterPublish: false
+      publishWebProjects: false
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Windows Artifacts'
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'Products-win-x64'
+      publishLocation: 'Container'
+
+- job:
+  displayName: Linux
+  pool:
+    vmImage: 'ubuntu-latest'
+
+  steps:
+  - task: NuGetCommand@2
+    displayName: 'Authenticate with NuGet feed'
+    inputs:
+      command: custom
+      arguments: 'sources update -Name "XPDev" -Username "andrenls" -Password "$(System.AccessToken)" -StorePasswordInClearText -ConfigFile nuget.config'
+      
+  - task: CmdLine@2
+    displayName: 'Update Packages'
+    inputs:
+      script: 'sudo apt-get update -y'
+
+  - task: CmdLine@2
+    displayName: 'Download CoreRT Dependencies'
+    inputs:
+      script: 'sudo apt-get install llvm cmake clang libicu-dev uuid-dev libcurl4-openssl-dev zlib1g-dev libkrb5-dev libtinfo5'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Restore Linux 64 packages'
+    inputs:
+      command: 'restore'
+      projects: 'Products/**/*.csproj'
+      restoreArguments: '--runtime linux-x64'
+      feedsToUse: 'config'
+      nugetConfigPath: 'nuget.config'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Build'
+    inputs:
+      command: 'publish'
+      arguments: '-r linux-x64 -c $(BuildConfiguration) -o $(Build.ArtifactStagingDirectory)/linux-x64'
+      projects: 'Products/**/*.csproj'
+      zipAfterPublish: false
+      publishWebProjects: false
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Linux Artifacts'
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'Products-linux-x64'
+      publishLocation: 'Container'
+
+#- job:
+  #displayName: macOS
+  #pool:
+    #vmImage: 'macOS-latest'
+
+  #steps:
+  #- task: NuGetCommand@2
+    #displayName: 'Authenticate with NuGet feed'
+    #inputs:
+      #command: custom
+      #arguments: 'sources update -Name "XPDev" -Username "andrenls" -Password "$(System.AccessToken)" -StorePasswordInClearText -ConfigFile nuget.config'
+
+  #- task: DotNetCoreCLI@2
+    #displayName: 'Build'
+    #inputs:
+      #command: 'publish'
+      #arguments: '-r osx-x64 -c $(BuildConfiguration) -o $(Build.ArtifactStagingDirectory)/osx-x64 /p:XPlaneSdk=$(Build.SourcesDirectory)/XPlaneSdk/Mac'
+      #projects: 'Products/**/*.csproj'
+      #zipAfterPublish: false
+      #publishWebProjects: false
+
+  #- task: PublishBuildArtifacts@1
+    #displayName: 'Publish Mac OS Artifacts'
+    #inputs:
+      #PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      #ArtifactName: 'Products-osx-x64'
+      #publishLocation: 'Container'

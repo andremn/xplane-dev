@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<Version>0.0.1</Version>
+		<Authors>xpdev</Authors>
+		<Company>xpdev</Company>
+		<AssemblyName>XPDev.FlightSoundsManagement</AssemblyName>
+		<RootNamespace>XPDev.FlightSoundsManagement</RootNamespace>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Nito.AsyncEx" Version="5.1.0" />
+		<PackageReference Include="XPDev.Audio" Version="0.0.1-CI-20210220-215509" />
+		<PackageReference Include="XPDev.FlightManagement" Version="0.0.1-CI-20210220-215518" />
+		<PackageReference Include="XPDev.Foundation" Version="0.0.1-CI-20210220-215509" />
+		<PackageReference Include="XPDev.Modularization" Version="0.0.1-CI-20210220-215509" />
+	</ItemGroup>
+
+</Project>

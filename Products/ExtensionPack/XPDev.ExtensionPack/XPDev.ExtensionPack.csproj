@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<OutputType>Library</OutputType>
+		<PluginName>ExtensionPack</PluginName>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="XPDev.FlightManagement" Version="0.0.1-CI-20210221-004357" />
+		<PackageReference Include="XPDev.FlightSoundsManagement" Version="0.0.1-CI-20210221-004357" />
+		<PackageReference Include="XPDev.Foundation" Version="0.0.1-CI-20210221-004400" />
+		<PackageReference Include="XPDev.Modularization" Version="0.0.1-CI-20210221-004400" />
+		<PackageReference Include="XPDev.XPlugin" Version="0.0.1-CI-20210221-004400" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<RdXmlFile Include="rd.xml" />
+	</ItemGroup>
+
+</Project>

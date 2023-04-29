@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<RuntimeIdentifiers>win-x64;osx-x64;linux-x64</RuntimeIdentifiers>
+		<PackageId>XPDev.Foundation</PackageId>
+		<Version>0.0.1</Version>
+		<Authors>xpdev</Authors>
+		<Company>xpdev</Company>
+		<AssemblyName>XPDev.Foundation</AssemblyName>
+		<RootNamespace>XPDev.Foundation</RootNamespace>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
+
+</Project>

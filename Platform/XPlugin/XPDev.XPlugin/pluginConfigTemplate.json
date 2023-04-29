@@ -1,0 +1,10 @@
+{
+  "log": {
+    "level": "Info",
+    "file": "$(PluginFolder)/Logs/log.txt"
+  },
+  "entry": {
+    "assembly": "XPDev.PluginAssembly",
+    "type": "XPDev.PluginAssembly.PluginClass"
+  }
+}

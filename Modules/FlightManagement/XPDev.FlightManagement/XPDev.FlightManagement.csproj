@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<OutputType>Library</OutputType>
+		<RuntimeIdentifiers>win-x64;osx-x64;linux-x64</RuntimeIdentifiers>
+		<PackageId>XPDev.FlightManagement</PackageId>
+		<Version>0.0.1</Version>
+		<Authors>xpdev</Authors>
+		<Company>xpdev</Company>
+		<AssemblyName>XPDev.FlightManagement</AssemblyName>
+		<RootNamespace>XPDev.FlightManagement</RootNamespace>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="XPDev.Foundation" Version="0.0.1-CI-20200811-011916" />
+		<PackageReference Include="XPDev.Modularization" Version="0.0.1-CI-20200811-011916" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,14 @@
+{
+  "flightSounds": {
+    "enabled": true,
+    "directoryPath": "$(PluginFolder)/Sounds"
+  },
+  "announcements": {
+    "enabled": true,
+    "directoryPath": "$(PluginFolder)/Sounds",
+    "liveries": {
+      "livery1FolderName": "$(PluginFolder)/Sounds/livery1FolderName",
+      "livery2FolderName": "$(PluginFolder)/Sounds/livery2FolderName"
+    }
+  }
+}

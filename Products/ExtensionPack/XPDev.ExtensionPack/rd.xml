@@ -1,0 +1,7 @@
+﻿<Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
+	<Application>
+		<Assembly Name="XPDev.ExtensionPack">
+			<Type Name="XPDev.ExtensionPack.ExtensionPackPlugin" Dynamic="Required All" />
+		</Assembly>
+	</Application>
+</Directives>

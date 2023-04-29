@@ -1,0 +1,18 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps: 
+- task: NuGetCommand@2
+  displayName: 'Authenticate with NuGet feed'
+  inputs:
+    command: custom
+    arguments: 'sources update -Name "XPDev" -Username "andrenls" -Password "$(System.AccessToken)" -StorePasswordInClearText -ConfigFile nuget.config'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build Tools'
+  inputs:
+    command: 'build'
+    projects: 'Tools/**/*.csproj'
